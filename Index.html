@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="list">
+    </ul>
+
+    <input id="list-input" class="form-control" type="text">
+    <button id ="submit-button">Click here! </button>
+    <button id ="clear-button">Click here to clear! </button>
+
+    <script>
+        let inputBox = document.querySelector("#list-input")
+        let button = document.querySelector("#submit-button")
+        let list = document.querySelector('#list')
+        let clearButton = document.querySelector('#clear-button')
+
+        // add an event listener to the button
+        button.addEventListener("click", function() {
+            // if the number of list items (length) is less than 10            
+            // create the list item, then append it
+
+            // if child element count is >=10
+            if (list.childElementCount >= 10) {
+                return // exit the function
+            }
+
+            // validate text inpt is between 1 and 50
+            if (inputBox.value.length <1) {
+                return
+            } 
+            
+            if (inputBox.value.length >50) {
+                alert('Text is too long!')
+                return
+            }
+
+            let newListItem = document.createElement('li')
+            newListItem.innerHTML = inputBox.value
+            list.appendChild(newListItem) 
+            inputBox.value = ''
+        })
+
+        // add an another event listener
+        clearButton.addEventListener("click", function() {
+            list.innerHTML = "";
+        })
+    </script>
+</body>
+</html>
